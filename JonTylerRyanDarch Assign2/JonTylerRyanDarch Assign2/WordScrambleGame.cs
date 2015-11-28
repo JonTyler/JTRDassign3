@@ -83,7 +83,7 @@ namespace JonTylerRyanDarch_Assign2
                 throw new FaultException<NoGameHostedFault>(nobodyHere);
             }
             //if activeplayers count is five, throw an exception.
-            if (activePlayers.Count > MAX_ALLOWED_PLAYERS)
+            if (activePlayers.Count + 1 > MAX_ALLOWED_PLAYERS)
             {
                 MaximumPlayersReachedFault maximumPlayersFault = new MaximumPlayersReachedFault();
                 maximumPlayersFault.playerName = playerName;
