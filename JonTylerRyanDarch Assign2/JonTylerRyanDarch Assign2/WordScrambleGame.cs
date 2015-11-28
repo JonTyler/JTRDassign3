@@ -10,8 +10,16 @@ namespace JonTylerRyanDarch_Assign2
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class WordScrambleGame : IWordScrambleGame
     {
-        string[] words = { "kitchener", "waterloo", "toronto", "ottawa", "montreal", "calgary", "edmonton", "vancouver" };
+        //max allowed players constant
+        private const int MAX_ALLOWED_PLAYERS = 5;
+        //user hosting the game. If it's null, no one is hosting.
+        private static string currentUserHostingGame = null;
+        //the word of the now, holding the scrambled and unscrambled words.
+        private static Word gameWord;
+        //list of players
+        private static List<String> activePlayers = new List<string>();
 
+        [OperationBehavior]
         public Word getScrambledWord()
         {
             Random random = new Random();
@@ -28,10 +36,25 @@ namespace JonTylerRyanDarch_Assign2
 
             return wordObj;
         }
-
-        public bool guessWord(string guessedWord, string unscrambledWord)
+        [OperationBehavior]
+        public bool isGameBeingHosted()
         {
-            return (guessedWord.CompareTo(unscrambledWord) == 0);
+            throw new NotImplementedException();
+        }
+        [OperationBehavior]
+        public string hostGame(string userNamne, string WordToScramble)
+        {
+            throw new NotImplementedException();
+        }
+        [OperationBehavior]
+        public Word join(string playerName)
+        {
+            throw new NotImplementedException();
+        }
+        [OperationBehavior]
+        public bool guessWord(string playerName, string guessedWord, string unscrambledWord)
+        {
+            throw new NotImplementedException();
         }
 
         private string scrambleWord(string word)

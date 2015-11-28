@@ -12,14 +12,26 @@ namespace JonTylerRyanDarch_Assign2
     public interface IWordScrambleGame
     {
         // TODO: Add your service operations here
-        [FaultContract(typeof(GameBeingHostedFault))]
+        //is the bloody thing beign hosted?
         [OperationContract]
         bool isGameBeingHosted();
-        [OperationContract]
-        Word getScrambledWord();
 
+        [FaultContract(typeof(GameBeingHostedFault))]
         [OperationContract]
-        bool guessWord(string guessedWord, string unscrambledWord);
+        //player userName tries to host game with the string Word to be scrambled
+        string hostGame(string userNamne, string WordToScramble);
+
+        [FaultContract(typeof(MaximumPlayersReachedFault))]
+        [FaultContract(typeof(HostCannotJoinGameFault))]
+        [FaultContract(typeof(NoGameHostedFault))]
+        [OperationContract]
+        //player playerName tries to join game and gets the word to be unscrambled
+        //
+        Word join(string playerName);
+       
+        [FaultContract(typeof(PlayerNotPlayingGameFault))]
+        [OperationContract]
+        bool guessWord(string playerName, string guessedWord, string unscrambledWord);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
@@ -34,26 +46,38 @@ namespace JonTylerRyanDarch_Assign2
     }
     public class GameBeingHostedFault
     {
+        //is the game already hosted by someone else?
         [DataMember]
-        public string connectionId;
+        public string userName;
         [DataMember]
         public string problem;
     }
     public class MaximumPlayersReachedFault
     {
+        // is a 6th person trying to join?
         [DataMember]
         public string problem;
         [DataMember]
-        public string id;
+        public string playerName;
     }
     public class HostCannotJoinGameFault
     {
+        //is a host trying to join as a user?
         [DataMember]
         public string problem;
+        [DataMember]
+        public string userName;
     }
     public class PlayerNotPlayingGameFault
     {
+        //is a user trying to play the game when they're not?
         [DataMember]
         public string problem;
+    }
+    public class NoGameHostedFault
+    {
+        //is no one hosting a game?
+        [DataMember]
+        string problem;
     }
 }
