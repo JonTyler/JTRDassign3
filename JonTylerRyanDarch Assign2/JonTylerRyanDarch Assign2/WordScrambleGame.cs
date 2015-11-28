@@ -48,7 +48,7 @@ namespace JonTylerRyanDarch_Assign2
             throw new NotImplementedException();
         }
         [OperationBehavior]
-        public string hostGame(string userNamne, string WordToScramble)
+        public string hostGame(string userName, string hostAddress, string WordToScramble)
         {
             throw new NotImplementedException();
         }

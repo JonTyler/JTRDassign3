@@ -1,5 +1,352 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WordScrambleGame" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:SecureConversationToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                  <wsp:Policy>
+                    <sp:RequireDerivedKeys />
+                    <sp:BootstrapPolicy>
+                      <wsp:Policy>
+                        <sp:SignedParts>
+                          <sp:Body />
+                          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                        </sp:SignedParts>
+                        <sp:EncryptedParts>
+                          <sp:Body />
+                        </sp:EncryptedParts>
+                        <sp:SymmetricBinding>
+                          <wsp:Policy>
+                            <sp:ProtectionToken>
+                              <wsp:Policy>
+                                <sp:SpnegoContextToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                                  <wsp:Policy>
+                                    <sp:RequireDerivedKeys />
+                                    <sp:MustNotSendCancel />
+                                    <sp:MustNotSendAmend />
+                                    <sp:MustNotSendRenew />
+                                  </wsp:Policy>
+                                </sp:SpnegoContextToken>
+                              </wsp:Policy>
+                            </sp:ProtectionToken>
+                            <sp:AlgorithmSuite>
+                              <wsp:Policy>
+                                <sp:Basic256 />
+                              </wsp:Policy>
+                            </sp:AlgorithmSuite>
+                            <sp:Layout>
+                              <wsp:Policy>
+                                <sp:Strict />
+                              </wsp:Policy>
+                            </sp:Layout>
+                            <sp:IncludeTimestamp />
+                            <sp:EncryptSignature />
+                            <sp:OnlySignEntireHeadersAndBody />
+                          </wsp:Policy>
+                        </sp:SymmetricBinding>
+                        <sp:Wss11>
+                          <wsp:Policy />
+                        </sp:Wss11>
+                        <sp:Trust13>
+                          <wsp:Policy>
+                            <sp:MustSupportIssuedTokens />
+                            <sp:RequireClientEntropy />
+                            <sp:RequireServerEntropy />
+                          </wsp:Policy>
+                        </sp:Trust13>
+                      </wsp:Policy>
+                    </sp:BootstrapPolicy>
+                    <sp:MustNotSendAmend />
+                  </wsp:Policy>
+                </sp:SecureConversationToken>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:EncryptSignature />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:Wss11 xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust13 xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust13>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_isGameBeingHosted_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_isGameBeingHosted_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_hostGame_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_hostGame_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_hostGame_GameBeingHostedFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_join_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_join_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_join_MaximumPlayersReachedFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_join_HostCannotJoinGameFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_join_NoGameHostedFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_guessWord_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_guessWord_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IWordScrambleGame_guessWord_PlayerNotPlayingGameFaultFault_Fault">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
@@ -7,11 +354,35 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/JonTylerRyanDarch_Assign2" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IWordScrambleGame_getScrambledWord_InputMessage">
-    <wsdl:part name="parameters" element="tns:getScrambledWord" />
+  <wsdl:message name="IWordScrambleGame_isGameBeingHosted_InputMessage">
+    <wsdl:part name="parameters" element="tns:isGameBeingHosted" />
   </wsdl:message>
-  <wsdl:message name="IWordScrambleGame_getScrambledWord_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getScrambledWordResponse" />
+  <wsdl:message name="IWordScrambleGame_isGameBeingHosted_OutputMessage">
+    <wsdl:part name="parameters" element="tns:isGameBeingHostedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWordScrambleGame_hostGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:hostGame" />
+  </wsdl:message>
+  <wsdl:message name="IWordScrambleGame_hostGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:hostGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWordScrambleGame_hostGame_GameBeingHostedFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/JonTylerRyanDarch_Assign2" name="detail" element="q1:GameBeingHostedFault" />
+  </wsdl:message>
+  <wsdl:message name="IWordScrambleGame_join_InputMessage">
+    <wsdl:part name="parameters" element="tns:join" />
+  </wsdl:message>
+  <wsdl:message name="IWordScrambleGame_join_OutputMessage">
+    <wsdl:part name="parameters" element="tns:joinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWordScrambleGame_join_MaximumPlayersReachedFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/JonTylerRyanDarch_Assign2" name="detail" element="q2:MaximumPlayersReachedFault" />
+  </wsdl:message>
+  <wsdl:message name="IWordScrambleGame_join_HostCannotJoinGameFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/JonTylerRyanDarch_Assign2" name="detail" element="q3:HostCannotJoinGameFault" />
+  </wsdl:message>
+  <wsdl:message name="IWordScrambleGame_join_NoGameHostedFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/JonTylerRyanDarch_Assign2" name="detail" element="q4:NoGameHostedFault" />
   </wsdl:message>
   <wsdl:message name="IWordScrambleGame_guessWord_InputMessage">
     <wsdl:part name="parameters" element="tns:guessWord" />
@@ -19,40 +390,109 @@
   <wsdl:message name="IWordScrambleGame_guessWord_OutputMessage">
     <wsdl:part name="parameters" element="tns:guessWordResponse" />
   </wsdl:message>
+  <wsdl:message name="IWordScrambleGame_guessWord_PlayerNotPlayingGameFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/JonTylerRyanDarch_Assign2" name="detail" element="q5:PlayerNotPlayingGameFault" />
+  </wsdl:message>
   <wsdl:portType name="IWordScrambleGame">
-    <wsdl:operation name="getScrambledWord">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWordScrambleGame/getScrambledWord" message="tns:IWordScrambleGame_getScrambledWord_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWordScrambleGame/getScrambledWordResponse" message="tns:IWordScrambleGame_getScrambledWord_OutputMessage" />
+    <wsdl:operation name="isGameBeingHosted">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWordScrambleGame/isGameBeingHosted" message="tns:IWordScrambleGame_isGameBeingHosted_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWordScrambleGame/isGameBeingHostedResponse" message="tns:IWordScrambleGame_isGameBeingHosted_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="hostGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWordScrambleGame/hostGame" message="tns:IWordScrambleGame_hostGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWordScrambleGame/hostGameResponse" message="tns:IWordScrambleGame_hostGame_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IWordScrambleGame/hostGameGameBeingHostedFaultFault" name="GameBeingHostedFaultFault" message="tns:IWordScrambleGame_hostGame_GameBeingHostedFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="join">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWordScrambleGame/join" message="tns:IWordScrambleGame_join_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWordScrambleGame/joinResponse" message="tns:IWordScrambleGame_join_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IWordScrambleGame/joinMaximumPlayersReachedFaultFault" name="MaximumPlayersReachedFaultFault" message="tns:IWordScrambleGame_join_MaximumPlayersReachedFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IWordScrambleGame/joinHostCannotJoinGameFaultFault" name="HostCannotJoinGameFaultFault" message="tns:IWordScrambleGame_join_HostCannotJoinGameFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IWordScrambleGame/joinNoGameHostedFaultFault" name="NoGameHostedFaultFault" message="tns:IWordScrambleGame_join_NoGameHostedFaultFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="guessWord">
       <wsdl:input wsaw:Action="http://tempuri.org/IWordScrambleGame/guessWord" message="tns:IWordScrambleGame_guessWord_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWordScrambleGame/guessWordResponse" message="tns:IWordScrambleGame_guessWord_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IWordScrambleGame/guessWordPlayerNotPlayingGameFaultFault" name="PlayerNotPlayingGameFaultFault" message="tns:IWordScrambleGame_guessWord_PlayerNotPlayingGameFaultFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="BasicHttpBinding_IWordScrambleGame" type="tns:IWordScrambleGame">
-    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="getScrambledWord">
-      <soap:operation soapAction="http://tempuri.org/IWordScrambleGame/getScrambledWord" style="document" />
+  <wsdl:binding name="WS2007HttpBinding_IWordScrambleGame" type="tns:IWordScrambleGame">
+    <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="isGameBeingHosted">
+      <soap12:operation soapAction="http://tempuri.org/IWordScrambleGame/isGameBeingHosted" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_isGameBeingHosted_Input_policy" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_isGameBeingHosted_output_policy" />
+        <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="guessWord">
-      <soap:operation soapAction="http://tempuri.org/IWordScrambleGame/guessWord" style="document" />
+    <wsdl:operation name="hostGame">
+      <soap12:operation soapAction="http://tempuri.org/IWordScrambleGame/hostGame" style="document" />
       <wsdl:input>
-        <soap:body use="literal" />
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_hostGame_Input_policy" />
+        <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="literal" />
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_hostGame_output_policy" />
+        <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="GameBeingHostedFaultFault">
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_hostGame_GameBeingHostedFaultFault_Fault" />
+        <soap12:fault use="literal" name="GameBeingHostedFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="join">
+      <soap12:operation soapAction="http://tempuri.org/IWordScrambleGame/join" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_join_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_join_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="MaximumPlayersReachedFaultFault">
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_join_MaximumPlayersReachedFaultFault_Fault" />
+        <soap12:fault use="literal" name="MaximumPlayersReachedFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="HostCannotJoinGameFaultFault">
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_join_HostCannotJoinGameFaultFault_Fault" />
+        <soap12:fault use="literal" name="HostCannotJoinGameFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="NoGameHostedFaultFault">
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_join_NoGameHostedFaultFault_Fault" />
+        <soap12:fault use="literal" name="NoGameHostedFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="guessWord">
+      <soap12:operation soapAction="http://tempuri.org/IWordScrambleGame/guessWord" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_guessWord_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_guessWord_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PlayerNotPlayingGameFaultFault">
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IWordScrambleGame_guessWord_PlayerNotPlayingGameFaultFault_Fault" />
+        <soap12:fault use="literal" name="PlayerNotPlayingGameFaultFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="WordScrambleGame">
-    <wsdl:port name="BasicHttpBinding_IWordScrambleGame" binding="tns:BasicHttpBinding_IWordScrambleGame">
-      <soap:address location="http://localhost:8733/Design_Time_Addresses/JonTylerRyanDarch_Assign2/Service1/" />
+    <wsdl:port name="WS2007HttpBinding_IWordScrambleGame" binding="tns:WS2007HttpBinding_IWordScrambleGame">
+      <soap12:address location="http://localhost:8733/Design_Time_Addresses/JonTylerRyanDarch_Assign2/Service1/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:8733/Design_Time_Addresses/JonTylerRyanDarch_Assign2/Service1/</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
