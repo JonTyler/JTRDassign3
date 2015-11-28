@@ -14,7 +14,7 @@ namespace JonTylerRyanDarch_Assign2
         // TODO: Add your service operations here
         [FaultContract(typeof(GameBeingHostedFault))]
         [OperationContract]
-        //TODO: figure out what operation the connection is
+        bool isGameBeingHosted();
         [OperationContract]
         Word getScrambledWord();
 

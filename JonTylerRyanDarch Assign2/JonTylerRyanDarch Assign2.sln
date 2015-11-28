@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JonTylerRyanDarch Assign2", "JonTylerRyanDarch Assign2\JonTylerRyanDarch Assign2.csproj", "{BEEADFB6-83BD-470C-B702-1560CAC7C8D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JonTylerRyanDarch Assign3", "JonTylerRyanDarch Assign2\JonTylerRyanDarch Assign3.csproj", "{BEEADFB6-83BD-470C-B702-1560CAC7C8D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordScrambleClient", "WordScrambleClient\WordScrambleClient.csproj", "{DC81AA5F-6EA1-4CA1-B14A-35B505A17992}"
 	ProjectSection(ProjectDependencies) = postProject
