@@ -45,13 +45,13 @@ namespace JonTylerRyanDarch_Assign2
         [OperationBehavior]
         public bool isGameBeingHosted()
         {
-            if(currentUserHostingGame != null)
+            if(currentUserHostingGame == null)
             {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
         [OperationBehavior]
