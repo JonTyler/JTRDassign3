@@ -15,7 +15,7 @@ namespace JonTylerRyanDarch_Assign2
         //user hosting the game. If it's null, no one is hosting.
         private static string currentUserHostingGame = null;
         //the word of the now, holding the scrambled and unscrambled words.
-        private static Word gameWord;
+        private static Word gameWord = new Word();
         //list of players
         private static List<String> activePlayers = new List<string>();
 
@@ -47,11 +47,11 @@ namespace JonTylerRyanDarch_Assign2
         {
             if(currentUserHostingGame == null)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
         [OperationBehavior]
