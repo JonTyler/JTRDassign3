@@ -19,7 +19,7 @@ namespace JonTylerRyanDarch_Assign2
         [FaultContract(typeof(GameBeingHostedFault))]
         [OperationContract]
         //player userName tries to host game with the string Word to be scrambled
-        string hostGame(string userNamne, string WordToScramble);
+        string hostGame(string userNamne, string hostAddress, string WordToScramble);
 
         [FaultContract(typeof(MaximumPlayersReachedFault))]
         [FaultContract(typeof(HostCannotJoinGameFault))]
