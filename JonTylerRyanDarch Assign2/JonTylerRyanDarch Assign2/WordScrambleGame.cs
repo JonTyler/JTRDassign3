@@ -50,7 +50,15 @@ namespace JonTylerRyanDarch_Assign2
         [OperationBehavior]
         public string hostGame(string userName, string hostAddress, string WordToScramble)
         {
-            throw new NotImplementedException();
+            //add the host to the activePlayers list.
+            activePlayers.Add(userName);
+            //add the host's userName as host
+            currentUserHostingGame = userName;
+            //scramble the host's word
+            gameWord.unscrambledWord = WordToScramble;
+            gameWord.scrambledWord = scrambleWord(WordToScramble);
+            // return the scrambled word to the host.
+            return gameWord.scrambledWord;
         }
         [OperationBehavior]
         public Word join(string playerName)
