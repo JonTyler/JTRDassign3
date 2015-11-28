@@ -20,21 +20,27 @@ namespace JonTylerRyanDarch_Assign2
         private static List<String> activePlayers = new List<string>();
 
         [OperationBehavior]
-        public Word getScrambledWord()
+        private string scrambleWord(string word)
         {
-            Random random = new Random();
+            char[] chars = word.ToArray();
 
-            string selectedWord = words[random.Next(words.Length)];
+            Random r = new Random(2011);
 
-            string scrambledWord = scrambleWord(selectedWord);
+            for (int i = 0; i < chars.Length; i++)
 
-            Word wordObj = new Word();
+            {
 
-            wordObj.unscrambledWord = selectedWord;
+                int randomIndex = r.Next(0, chars.Length);
 
-            wordObj.scrambledWord = scrambledWord;
+                char temp = chars[randomIndex];
 
-            return wordObj;
+                chars[randomIndex] = chars[i];
+
+                chars[i] = temp;
+
+            }
+
+            return new string(chars);
         }
         [OperationBehavior]
         public bool isGameBeingHosted()
@@ -57,21 +63,6 @@ namespace JonTylerRyanDarch_Assign2
             throw new NotImplementedException();
         }
 
-        private string scrambleWord(string word)
-        {
-            char[] chars = word.ToArray();
-            Random r = new Random(2011);
-            for (int i = 0; i < chars.Length; i++)
-            {
-                int randomIndex = r.Next(0, chars.Length);
-                char temp = chars[randomIndex];
-                chars[randomIndex] = chars[i];
-                chars[i] = temp;
-            }
-
-            return new string(chars);
-
-        }
 
         
     }
