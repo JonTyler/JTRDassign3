@@ -107,7 +107,23 @@ namespace JonTylerRyanDarch_Assign2
         [OperationBehavior]
         public bool guessWord(string playerName, string guessedWord, string unscrambledWord)
         {
-            throw new NotImplementedException();
+           //find the player name in the active player list, if not found, throw exception.
+            if(!activePlayers.Contains(playerName))
+            {
+                PlayerNotPlayingGameFault noGame4u = new PlayerNotPlayingGameFault();
+                noGame4u.problem = "You're not playing this game.";
+                throw new FaultException<PlayerNotPlayingGameFault>(noGame4u);
+            }
+
+            //compare (must EXACTLY MATCH)
+            if(guessedWord.Trim() == unscrambledWord.Trim())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
