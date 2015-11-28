@@ -60,7 +60,7 @@ namespace WordScrambleClient
                                 String guessedWord;
 
                                 bool gameOver = false;
-                                while (!gameOver)
+                                while (!gameOver && !proxy.isGameOver())
                                 {
                                     guessedWord = Console.ReadLine();
                                     //catch the 'not playing game' fault
@@ -75,6 +75,10 @@ namespace WordScrambleClient
                                     if (!gameOver)
                                     {
                                         Console.WriteLine("Nope, try again...");
+                                    }
+                                    if(proxy.isGameOver())
+                                    {
+                                        Console.WriteLine("Game is over. YOU HAVE LOST!");
                                     }
                                 }
                                 Console.WriteLine("You WON!!!");

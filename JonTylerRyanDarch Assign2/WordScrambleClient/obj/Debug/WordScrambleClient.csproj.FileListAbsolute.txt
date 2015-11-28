@@ -16,4 +16,3 @@ C:\Users\Dad\Source\Repos\JTRDassign3\JonTylerRyanDarch Assign2\WordScrambleClie
 C:\Users\Dad\Source\Repos\JTRDassign3\JonTylerRyanDarch Assign2\WordScrambleClient\bin\Debug\WordScrambleClient.pdb
 C:\Users\Dad\Source\Repos\JTRDassign3\JonTylerRyanDarch Assign2\WordScrambleClient\obj\Debug\WordScrambleClient.exe
 C:\Users\Dad\Source\Repos\JTRDassign3\JonTylerRyanDarch Assign2\WordScrambleClient\obj\Debug\WordScrambleClient.pdb
-C:\Users\Dad\Source\Repos\JTRDassign3\JonTylerRyanDarch Assign2\WordScrambleClient\obj\Debug\WordScrambleClient.csprojResolveAssemblyReference.cache

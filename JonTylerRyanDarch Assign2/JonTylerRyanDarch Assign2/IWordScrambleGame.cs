@@ -32,6 +32,9 @@ namespace JonTylerRyanDarch_Assign2
         [FaultContract(typeof(PlayerNotPlayingGameFault))]
         [OperationContract]
         bool guessWord(string playerName, string guessedWord, string unscrambledWord);
+
+        [OperationContract]
+        bool isGameOver();
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

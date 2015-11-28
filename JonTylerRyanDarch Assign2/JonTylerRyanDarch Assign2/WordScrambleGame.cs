@@ -18,7 +18,8 @@ namespace JonTylerRyanDarch_Assign2
         private static Word gameWord = new Word();
         //list of players
         private static List<String> activePlayers = new List<string>();
-
+        //has the game been won?
+        private bool gameOverYeah = false;
         [OperationBehavior]
         private string scrambleWord(string word)
         {
@@ -118,14 +119,20 @@ namespace JonTylerRyanDarch_Assign2
             //compare (must EXACTLY MATCH)
             if(guessedWord.Trim() == unscrambledWord.Trim())
             {
+                gameOverYeah = true;
                 return true;
+                
             }
             else
             {
                 return false;
             }
         }
-
+        [OperationBehavior]
+        public bool isGameOver()
+        {
+            return gameOverYeah;
+        }
 
         
     }

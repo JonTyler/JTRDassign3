@@ -379,6 +379,12 @@ namespace WordScrambleClient.WordScrambleGameService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/guessWord", ReplyAction="http://tempuri.org/IWordScrambleGame/guessWordResponse")]
         System.Threading.Tasks.Task<bool> guessWordAsync(string playerName, string guessedWord, string unscrambledWord);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/isGameOver", ReplyAction="http://tempuri.org/IWordScrambleGame/isGameOverResponse")]
+        bool isGameOver();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWordScrambleGame/isGameOver", ReplyAction="http://tempuri.org/IWordScrambleGame/isGameOverResponse")]
+        System.Threading.Tasks.Task<bool> isGameOverAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -438,6 +444,14 @@ namespace WordScrambleClient.WordScrambleGameService {
         
         public System.Threading.Tasks.Task<bool> guessWordAsync(string playerName, string guessedWord, string unscrambledWord) {
             return base.Channel.guessWordAsync(playerName, guessedWord, unscrambledWord);
+        }
+        
+        public bool isGameOver() {
+            return base.Channel.isGameOver();
+        }
+        
+        public System.Threading.Tasks.Task<bool> isGameOverAsync() {
+            return base.Channel.isGameOverAsync();
         }
     }
 }
