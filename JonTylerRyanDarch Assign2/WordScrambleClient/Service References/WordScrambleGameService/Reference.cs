@@ -266,6 +266,9 @@ namespace WordScrambleClient.WordScrambleGameService {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string problemField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -273,6 +276,19 @@ namespace WordScrambleClient.WordScrambleGameService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string problem {
+            get {
+                return this.problemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.problemField, value) != true)) {
+                    this.problemField = value;
+                    this.RaisePropertyChanged("problem");
+                }
             }
         }
         

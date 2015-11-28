@@ -29,7 +29,9 @@
   </xs:complexType>
   <xs:element name="HostCannotJoinGameFault" nillable="true" type="tns:HostCannotJoinGameFault" />
   <xs:complexType name="NoGameHostedFault">
-    <xs:sequence />
+    <xs:sequence>
+      <xs:element minOccurs="0" name="problem" nillable="true" type="xs:string" />
+    </xs:sequence>
   </xs:complexType>
   <xs:element name="NoGameHostedFault" nillable="true" type="tns:NoGameHostedFault" />
   <xs:complexType name="PlayerNotPlayingGameFault">
