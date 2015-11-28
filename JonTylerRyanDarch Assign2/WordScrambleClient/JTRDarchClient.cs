@@ -76,7 +76,7 @@ namespace WordScrambleClient
                                     {
                                         Console.WriteLine("Nope, try again...");
                                     }
-                                    if(proxy.isGameOver())
+                                    else if(proxy.isGameOver())
                                     {
                                         Console.WriteLine("Game is over. YOU HAVE LOST!");
                                     }
