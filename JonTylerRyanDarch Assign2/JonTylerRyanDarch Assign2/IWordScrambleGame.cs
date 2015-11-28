@@ -78,6 +78,6 @@ namespace JonTylerRyanDarch_Assign2
     {
         //is no one hosting a game?
         [DataMember]
-        string problem;
+        public string problem;
     }
 }

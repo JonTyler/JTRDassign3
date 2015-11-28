@@ -45,13 +45,25 @@ namespace JonTylerRyanDarch_Assign2
         [OperationBehavior]
         public bool isGameBeingHosted()
         {
-            throw new NotImplementedException();
+            if(currentUserHostingGame != null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
         [OperationBehavior]
         public string hostGame(string userName, string hostAddress, string WordToScramble)
         {
-            //add the host to the activePlayers list.
-            activePlayers.Add(userName);
+            if(currentUserHostingGame != null)
+            {
+                GameBeingHostedFault alreadyThere = new GameBeingHostedFault();
+                alreadyThere.userName = userName;
+                alreadyThere.problem = "You cannot join as host to a game already being hosted.";
+                throw new FaultException<GameBeingHostedFault>(alreadyThere);
+            }
             //add the host's userName as host
             currentUserHostingGame = userName;
             //scramble the host's word
@@ -63,7 +75,34 @@ namespace JonTylerRyanDarch_Assign2
         [OperationBehavior]
         public Word join(string playerName)
         {
-            throw new NotImplementedException();
+            //if nobody is hosting the game, they can't join as a player.
+            if (currentUserHostingGame == null)
+            {
+                NoGameHostedFault nobodyHere = new NoGameHostedFault();
+                nobodyHere.problem = "No one is hosting the game. It is sad day. :c";
+                throw new FaultException<NoGameHostedFault>(nobodyHere);
+            }
+            //if activeplayers count is five, throw an exception.
+            if (activePlayers.Count > MAX_ALLOWED_PLAYERS)
+            {
+                MaximumPlayersReachedFault maximumPlayersFault = new MaximumPlayersReachedFault();
+                maximumPlayersFault.playerName = playerName;
+                maximumPlayersFault.problem = "Maximum players reached: " + MAX_ALLOWED_PLAYERS.ToString();
+                throw new FaultException<MaximumPlayersReachedFault>(maximumPlayersFault);
+            }
+            //if the host's name is taken, they can't join as a player
+            if(playerName == currentUserHostingGame)
+            {
+                HostCannotJoinGameFault hostJoinFault = new HostCannotJoinGameFault();
+                hostJoinFault.userName = playerName;
+                hostJoinFault.problem = "You are already hosting, you cannot join as a player.";
+                throw new FaultException<HostCannotJoinGameFault>(hostJoinFault);
+            }
+            else
+            {
+                activePlayers.Add(playerName);
+                return gameWord;
+            }
         }
         [OperationBehavior]
         public bool guessWord(string playerName, string guessedWord, string unscrambledWord)
