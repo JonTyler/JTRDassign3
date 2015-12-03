@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+JTRDarch.cs
+The client that talks to WordscrambleGame service
+
+Revision History:
+        2015-11-28: Scrapped old code entirely and rewrote
+        Jonathon Tyler
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

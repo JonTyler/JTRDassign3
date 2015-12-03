@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+WordScrambleGame.cs
+The Service.
+
+Revision History:
+        2015-11-28: Modified from Assignment 2 code
+        Ryan Darch
+        2015-11-28: Modified to include errors and assignment 3 code
+        Jonathon Tyler
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
